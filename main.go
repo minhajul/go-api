@@ -28,7 +28,7 @@ type User struct {
 func getAddresses(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
-	db := dbConn()
+	db := dbConnection()
 
 	defer db.Close()
 
@@ -70,7 +70,7 @@ func getAddresses(w http.ResponseWriter, r *http.Request) {
 func getUsers(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
-	db := dbConn()
+	db := dbConnection()
 
 	defer db.Close()
 
@@ -105,7 +105,7 @@ func getUsers(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(users)
 }
 
-func dbConn() (db *sql.DB) {
+func dbConnection() (db *sql.DB) {
 	dbDriver := "mysql"
 	dbUser := "root"
 	dbPass := ""
